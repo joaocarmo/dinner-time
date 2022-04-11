@@ -23,6 +23,8 @@ services:
     build:
       context: ./frontend
     container_name: frontend
+    environment:
+      - WDS_SOCKET_PORT=0
     command: ["yarn", "start"]
     volumes:
       - ./frontend:/app

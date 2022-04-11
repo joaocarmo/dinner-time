@@ -48,3 +48,5 @@ end
 
 # Natural language parsing of recipe ingredients, making sense of amounts, units, and ingredients
 gem "ingreedy", "~> 0.1.0"
+
+gem "active_model_serializers", "~> 0.10.13"
