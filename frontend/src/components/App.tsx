@@ -1,9 +1,9 @@
-const App = () => {
-  return (
-    <div className="container max-w-screen-lg mx-auto my-14 bg-slate-300">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
-  )
-}
+import Recipes from './Recipes'
+
+const App = () => (
+  <div className="container mx-auto my-14 max-w-screen-lg p-8">
+    <Recipes />
+  </div>
+)
 
 export default App
