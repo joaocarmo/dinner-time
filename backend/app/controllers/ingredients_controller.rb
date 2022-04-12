@@ -3,9 +3,10 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.order(:name).page params[:page]
+    count = Ingredient.count
 
-    render json: @ingredients
+    render json: { ingredients: @ingredients, page: params[:page] || 1, per_page: @ingredients.count, count: count }
   end
 
   # GET /ingredients/1

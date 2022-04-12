@@ -50,3 +50,5 @@ end
 gem "ingreedy", "~> 0.1.0"
 
 gem "active_model_serializers", "~> 0.10.13"
+
+gem "kaminari", "~> 1.2"

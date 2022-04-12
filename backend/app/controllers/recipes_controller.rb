@@ -3,9 +3,10 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.order(:title).page params[:page]
+    count = Recipe.count
 
-    render json: @recipes
+    render json: { recipes: @recipes, page: params[:page] || 1, per_page: @recipes.count, count: count }
   end
 
   # GET /recipes/1
