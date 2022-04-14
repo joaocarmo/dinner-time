@@ -10,6 +10,10 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-query": "^3.34.19"
@@ -23,6 +27,7 @@
     "@types/react": "^18.0.1",
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.4",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-tailwindcss": "^3.5.0",
     "patch-package": "^6.4.7",
     "postcss": "^8.4.12",
@@ -37,7 +42,8 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "plugin:tailwindcss/recommended"
+      "plugin:tailwindcss/recommended",
+      "prettier"
     ],
     "plugins": [
       "tailwindcss"

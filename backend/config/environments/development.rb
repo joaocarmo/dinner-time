@@ -64,4 +64,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts.clear
+
+  config.log_level = :debug
 end

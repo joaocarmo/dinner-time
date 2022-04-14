@@ -1,4 +1,6 @@
 import type { FC } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import type { Recipe } from '../api/fetchRecipes'
 
 type RecipeProps = {
@@ -30,7 +32,10 @@ const RecipeCard: FC<RecipeProps> = ({
         <h1 className="flex-auto text-lg font-semibold text-slate-900">
           {title}
         </h1>
-        <div className="text-lg font-semibold text-slate-500">{ratings}</div>
+        <div className="align-middle text-lg font-semibold text-slate-500">
+          <span>{ratings}</span>{' '}
+          <FontAwesomeIcon icon={solid('star')} className="text-yellow-400" />
+        </div>
         <div className="mt-2 w-full flex-none text-sm font-medium text-slate-700">
           {author}
         </div>

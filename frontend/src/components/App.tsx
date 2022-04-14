@@ -1,7 +1,7 @@
 import Recipes from './Recipes'
 
 const App = () => (
-  <div className="container mx-auto my-14 max-w-screen-lg p-8">
+  <div className="container my-14 mx-auto max-w-screen-lg p-8">
     <Recipes />
   </div>
 )

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users
       resources :recipes
       resources :ingredients
+      resources :user_ingredients
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

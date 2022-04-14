@@ -3,6 +3,10 @@ class UserIngredient < ApplicationRecord
   belongs_to :user
 
   def name
-    Ingredient.find(self.ingredient_id).name
+    if self.ingredient_id
+      Ingredient.find(self.ingredient_id).name
+    else
+      ""
+    end
   end
 end
