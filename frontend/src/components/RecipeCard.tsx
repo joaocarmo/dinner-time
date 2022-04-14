@@ -19,12 +19,12 @@ const RecipeCard: FC<RecipeProps> = ({
     cook_time,
   },
 }) => (
-  <div className="my-4 flex rounded bg-slate-100 font-sans">
-    <div className="relative w-48 flex-none">
+  <div className="flex my-4 font-sans bg-slate-100 rounded">
+    <div className="relative flex-none w-48">
       <img
         src={image}
         alt=""
-        className="absolute inset-0 h-full w-full rounded object-cover"
+        className="object-cover absolute inset-0 w-full h-full rounded"
       />
     </div>
     <form className="flex-auto p-6">
@@ -32,22 +32,22 @@ const RecipeCard: FC<RecipeProps> = ({
         <h1 className="flex-auto text-lg font-semibold text-slate-900">
           {title}
         </h1>
-        <div className="align-middle text-lg font-semibold text-slate-500">
+        <div className="text-lg font-semibold text-slate-500 align-middle">
           <span>{ratings}</span>{' '}
           <FontAwesomeIcon icon={solid('star')} className="text-yellow-400" />
         </div>
-        <div className="mt-2 w-full flex-none text-sm font-medium text-slate-700">
+        <div className="flex-none mt-2 w-full text-sm font-medium text-slate-700">
           {author}
         </div>
       </div>
-      <div className="mt-4 mb-6 flex space-x-4 text-sm font-medium">
-        <div className="flex flex-auto space-x-4">
-          <div className="h-10 rounded-md bg-black px-6 text-center font-semibold text-white">
+      <div className="flex mt-4 mb-6 space-x-4 text-sm font-medium">
+        <div className="flex flex-wrap flex-auto md:space-x-4 space-y-2 md:space-y-0">
+          <div className="flex px-6 font-semibold text-center text-white bg-black rounded-md min-h-10">
             Prep Time
             <br />
             {`${prep_time} min`}
           </div>
-          <div className="h-10 rounded-md border border-slate-200 px-6 text-center font-semibold text-slate-900">
+          <div className="flex px-6 font-semibold text-center text-slate-900 rounded-md border border-slate-200 min-h-10">
             Cook Time
             <br />
             {`${cook_time} min`}

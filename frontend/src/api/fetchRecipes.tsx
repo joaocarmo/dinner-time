@@ -1,5 +1,5 @@
 import type { QueryFunctionContext } from 'react-query'
-import { recipes as recipesApi } from './'
+import { search as searchApi, recipes as recipesApi } from './'
 
 export type Ingredient = {
   id: number
@@ -30,14 +30,18 @@ export type RecipeResponse = {
 export type RecipeKey = [
   string,
   string | number | undefined,
-  { page: string | number },
+  {
+    query: string
+    page: string | number
+  },
 ]
 
 const fetchRecipes = async ({
   queryKey,
 }: QueryFunctionContext<RecipeKey>): Promise<Recipe> => {
-  const [, recipeId, { page }] = queryKey
-  const response = await fetch(recipesApi(recipeId, page))
+  const [, recipeId, { query, page }] = queryKey
+  const whichApi = query ? searchApi(query) : recipesApi(recipeId, page)
+  const response = await fetch(whichApi)
 
   if (!response.ok) {
     throw new Error('Network response was not ok')
