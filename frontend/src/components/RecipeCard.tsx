@@ -41,13 +41,13 @@ const RecipeCard: FC<RecipeProps> = ({
         </div>
       </div>
       <div className="flex mt-4 mb-6 space-x-4 text-sm font-medium">
-        <div className="flex flex-wrap flex-auto md:space-x-4 space-y-2 md:space-y-0">
-          <div className="flex px-6 font-semibold text-center text-white bg-black rounded-md min-h-10">
+        <div className="flex flex-wrap flex-auto space-y-2 md:space-y-0 md:space-x-4">
+          <div className="flex px-6 min-h-min font-semibold text-center text-white bg-black rounded-md">
             Prep Time
             <br />
             {`${prep_time} min`}
           </div>
-          <div className="flex px-6 font-semibold text-center text-slate-900 rounded-md border border-slate-200 min-h-10">
+          <div className="flex px-6 min-h-min font-semibold text-center text-slate-900 rounded-md border border-slate-200">
             Cook Time
             <br />
             {`${cook_time} min`}

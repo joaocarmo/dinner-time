@@ -16,9 +16,9 @@ const Search = ({ onChange, value }: SearchProps) => {
   }, [])
 
   return (
-    <div className="flex mb-12 bg-white relative pointer-events-auto">
+    <div className="flex relative mb-12 bg-white pointer-events-auto">
       <input
-        className="hidden w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300"
+        className="flex items-center py-1.5 pr-3 pl-2 w-full text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 hover:ring-slate-300 shadow-sm"
         onChange={onChange}
         placeholder="Type ingredients separated by commas..."
         ref={inputRef}
