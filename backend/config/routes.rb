@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     scope :v1 do
       resources :users
       resources :recipes
+      resources :search
       resources :ingredients
       resources :user_ingredients
     end

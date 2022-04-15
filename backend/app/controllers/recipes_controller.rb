@@ -6,7 +6,9 @@ class RecipesController < ApplicationController
     @recipes = Recipe.order(:title).page params[:page]
     count = Recipe.count
 
-    render json: { recipes: @recipes, page: params[:page] || 1, per_page: @recipes.count, count: count }
+    serialized_recipes = ActiveModel::Serializer::CollectionSerializer.new(@recipes, each_serializer: RecipeSerializer)
+
+    render json: { recipes: serialized_recipes, page: params[:page] || 1, per_page: @recipes.count, count: count }
   end
 
   # GET /recipes/1

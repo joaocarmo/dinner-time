@@ -9,14 +9,14 @@ type RecipeProps = {
 
 const RecipeCard: FC<RecipeProps> = ({
   data: {
-    title,
-    author,
-    image,
-    ratings,
     category,
-    cuisine,
-    prep_time,
     cook_time,
+    cuisine,
+    image,
+    prep_time,
+    ratings,
+    recipe_ingredients,
+    title,
   },
 }) => (
   <div className="flex my-4 font-sans bg-slate-100 rounded">
@@ -37,7 +37,8 @@ const RecipeCard: FC<RecipeProps> = ({
           <FontAwesomeIcon icon={solid('star')} className="text-yellow-400" />
         </div>
         <div className="flex-none mt-2 w-full text-sm font-medium text-slate-700">
-          {author}
+          {category}
+          {cuisine ? ` · ${cuisine}` : ''}
         </div>
       </div>
       <div className="flex mt-4 mb-6 space-x-4 text-sm font-medium">
@@ -54,10 +55,17 @@ const RecipeCard: FC<RecipeProps> = ({
           </div>
         </div>
       </div>
-      <p className="text-sm text-slate-700">
-        {category}
-        {cuisine ? ` · ${cuisine}` : ''}
-      </p>
+      <ul className="text-sm text-slate-700">
+        {recipe_ingredients.map((recipe_ingredient, index) => (
+          <li key={index}>
+            {recipe_ingredient.amount
+              ? parseFloat(recipe_ingredient.amount).toFixed(1)
+              : ''}{' '}
+            {recipe_ingredient.unit} {recipe_ingredient.ingredient.name}
+            {index !== recipe_ingredients.length - 1 ? <br /> : null}
+          </li>
+        ))}
+      </ul>
     </form>
   </div>
 )
