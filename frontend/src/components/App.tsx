@@ -2,9 +2,11 @@ import { useCallback, useState } from 'react'
 import type { ChangeEvent } from 'react'
 import { useDebounce } from 'usehooks-ts'
 import Find from './Find'
+import Footer from './Footer'
 import MustContainAll from './MustContainAll'
 import Recipes from './Recipes'
 import Search from './Search'
+import Welcome from './Welcome'
 
 const App = () => {
   const [searchEnabled, setSearchEnabled] = useState(false)
@@ -32,6 +34,7 @@ const App = () => {
 
   return (
     <div className="container p-8 my-14 mx-auto max-w-screen-lg">
+      <Welcome />
       {searchEnabled ? (
         <Search onChange={handleOnSearchChange} value={searchValue} />
       ) : (
@@ -42,6 +45,7 @@ const App = () => {
         onChange={handleChangeContainAll}
       />
       <Recipes mustContainAll={mustContainAll} query={debouncedSearchValue} />
+      <Footer />
     </div>
   )
 }

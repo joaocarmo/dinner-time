@@ -20,15 +20,15 @@ We expect to use this prototype as a starting point to discuss current implenent
 
 #### Tech must-haves
 
-- [ ] MySQL / PostgreSQL or any other MySQL-compatible database.
-- [ ] A backend application which responds to queries
-- [ ] A web interface (can be VERY simple)
-- [ ] Ruby on Rails
+- [x] MySQL / PostgreSQL or any other MySQL-compatible database.
+- [x] A backend application which responds to queries
+- [x] A web interface (can be VERY simple)
+- [x] Ruby on Rails
 
 #### Bonus points
 
-- [ ] React
-- [ ] Application is hosted on heroku
+- [x] React
+- [x] Application is hosted on heroku
 
 ## Data
 
