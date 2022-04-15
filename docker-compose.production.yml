@@ -22,16 +22,13 @@ services:
   frontend:
     build:
       context: ./frontend
-      target: development
+      target: production
     container_name: frontend
-    environment:
-      - WDS_SOCKET_PORT=0
-    command: ["yarn", "start"]
+    command: ["nginx", "-g", "daemon off;"]
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - ./frontend/nginx:/etc/nginx/conf.d/
     ports:
-      - "4040:3000"
+      - "4040:80"
     depends_on:
       - backend
 

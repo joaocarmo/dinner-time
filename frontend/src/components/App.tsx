@@ -12,7 +12,7 @@ const App = () => {
   const [searchEnabled, setSearchEnabled] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [mustContainAll, setMustContainAll] = useState(true)
-  const debouncedSearchValue = useDebounce<string>(searchValue, 500)
+  const debouncedSearchValue = useDebounce<string>(searchValue, 700)
 
   const handleOnFindClick = useCallback(() => {
     setSearchEnabled(true)
