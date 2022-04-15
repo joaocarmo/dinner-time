@@ -1,19 +1,31 @@
 import { useCallback, useState } from 'react'
+import type { ChangeEvent } from 'react'
+import { useDebounce } from 'usehooks-ts'
 import Find from './Find'
-import Search from './Search'
+import MustContainAll from './MustContainAll'
 import Recipes from './Recipes'
+import Search from './Search'
 
 const App = () => {
   const [searchEnabled, setSearchEnabled] = useState(false)
   const [searchValue, setSearchValue] = useState('')
+  const [mustContainAll, setMustContainAll] = useState(true)
+  const debouncedSearchValue = useDebounce<string>(searchValue, 500)
 
   const handleOnFindClick = useCallback(() => {
     setSearchEnabled(true)
   }, [])
 
   const handleOnSearchChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       setSearchValue(event.target.value)
+    },
+    [],
+  )
+
+  const handleChangeContainAll = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setMustContainAll(event.target.checked)
     },
     [],
   )
@@ -21,11 +33,15 @@ const App = () => {
   return (
     <div className="container p-8 my-14 mx-auto max-w-screen-lg">
       {searchEnabled ? (
-        <Search value={searchValue} onChange={handleOnSearchChange} />
+        <Search onChange={handleOnSearchChange} value={searchValue} />
       ) : (
         <Find onClick={handleOnFindClick} />
       )}
-      <Recipes query={searchValue} />
+      <MustContainAll
+        checked={mustContainAll}
+        onChange={handleChangeContainAll}
+      />
+      <Recipes mustContainAll={mustContainAll} query={debouncedSearchValue} />
     </div>
   )
 }

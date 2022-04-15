@@ -4,17 +4,18 @@ import type { RecipeKey, RecipeResponse } from '../api/fetchRecipes'
 import RecipeCard from './RecipeCard'
 
 type RecipesProps = {
+  mustContainAll: boolean
   query: string
 }
 
-const Recipes = ({ query }: RecipesProps) => {
+const Recipes = ({ mustContainAll, query }: RecipesProps) => {
   const page = 1
   const { isLoading, data } = useQuery<
     unknown,
     unknown,
     RecipeResponse,
     RecipeKey
-  >(['recipes', undefined, { query, page }], fetchRecipes)
+  >(['recipes', undefined, { mustContainAll, page, query }], fetchRecipes)
 
   if (isLoading) {
     return <div>Loading...</div>

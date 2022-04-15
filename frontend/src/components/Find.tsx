@@ -7,7 +7,7 @@ type FindProps = {
 const Find = ({ onClick }: FindProps) => {
   return (
     <div
-      className="flex relative mb-12 bg-white pointer-events-auto"
+      className="flex relative mb-4 bg-white pointer-events-auto"
       onClick={onClick}
     >
       <button

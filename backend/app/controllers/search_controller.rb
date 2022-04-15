@@ -11,9 +11,9 @@ class SearchController < ApplicationController
     end
 
     if must_contain_all
-      @recipes = Recipe.search_by_ingredients(ingredients).order(:title).page params[:page]
-    else
       @recipes = Recipe.search_by_all_ingredients(ingredients).order(:title).page params[:page]
+    else
+      @recipes = Recipe.search_by_ingredients(ingredients).order(:title).page params[:page]
     end
     count = Recipe.count
 

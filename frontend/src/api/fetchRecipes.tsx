@@ -34,16 +34,19 @@ export type RecipeKey = [
   string,
   string | number | undefined,
   {
-    query: string
+    mustContainAll: boolean
     page: string | number
+    query: string
   },
 ]
 
 const fetchRecipes = async ({
   queryKey,
 }: QueryFunctionContext<RecipeKey>): Promise<Recipe> => {
-  const [, recipeId, { query, page }] = queryKey
-  const whichApi = query ? searchApi(query) : recipesApi(recipeId, page)
+  const [, recipeId, { mustContainAll, page, query }] = queryKey
+  const whichApi = query
+    ? searchApi(query, mustContainAll)
+    : recipesApi(recipeId, page)
   const response = await fetch(whichApi)
 
   if (!response.ok) {
