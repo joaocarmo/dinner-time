@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   # GET /search
   def index
     query = params[:q]
+    must_contain_all = params[:must_contain_all] == "true"
 
     if query.nil?
       ingredients = []
@@ -9,7 +10,11 @@ class SearchController < ApplicationController
       ingredients = query.split(',').map(&:strip)
     end
 
-    @recipes = Recipe.search_by_ingredients(ingredients).order(:title).page params[:page]
+    if must_contain_all
+      @recipes = Recipe.search_by_ingredients(ingredients).order(:title).page params[:page]
+    else
+      @recipes = Recipe.search_by_all_ingredients(ingredients).order(:title).page params[:page]
+    end
     count = Recipe.count
 
     serialized_recipes = ActiveModel::Serializer::CollectionSerializer.new(@recipes, each_serializer: RecipeSerializer)
