@@ -4,6 +4,7 @@ import { useDebounce } from 'usehooks-ts'
 import Find from './Find'
 import Footer from './Footer'
 import MustContainAll from './MustContainAll'
+import ChangePage from './ChangePage'
 import Recipes from './Recipes'
 import Search from './Search'
 import Welcome from './Welcome'
@@ -12,7 +13,8 @@ const App = () => {
   const [searchEnabled, setSearchEnabled] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [mustContainAll, setMustContainAll] = useState(true)
-  const debouncedSearchValue = useDebounce<string>(searchValue, 700)
+  const [page, setPage] = useState(1)
+  const debouncedSearchValue = useDebounce<string>(searchValue, 1500)
 
   const handleOnFindClick = useCallback(() => {
     setSearchEnabled(true)
@@ -21,6 +23,7 @@ const App = () => {
   const handleOnSearchChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setSearchValue(event.target.value)
+      setPage(1)
     },
     [],
   )
@@ -31,6 +34,14 @@ const App = () => {
     },
     [],
   )
+
+  const setNextPage = useCallback(() => {
+    setPage((page) => page + 1)
+  }, [])
+
+  const setPreviousPage = useCallback(() => {
+    setPage((page) => page - 1)
+  }, [])
 
   return (
     <div className="container p-8 my-14 mx-auto max-w-screen-lg">
@@ -44,7 +55,18 @@ const App = () => {
         checked={mustContainAll}
         onChange={handleChangeContainAll}
       />
-      <Recipes mustContainAll={mustContainAll} query={debouncedSearchValue} />
+      <Recipes
+        mustContainAll={mustContainAll}
+        page={page}
+        query={debouncedSearchValue}
+      />
+      {!searchValue && (
+        <ChangePage
+          onNext={setNextPage}
+          onPrevious={setPreviousPage}
+          page={page}
+        />
+      )}
       <Footer />
     </div>
   )

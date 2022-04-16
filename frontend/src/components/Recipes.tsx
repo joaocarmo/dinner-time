@@ -5,11 +5,11 @@ import RecipeCard from './RecipeCard'
 
 type RecipesProps = {
   mustContainAll: boolean
+  page: number
   query: string
 }
 
-const Recipes = ({ mustContainAll, query }: RecipesProps) => {
-  const page = 1
+const Recipes = ({ mustContainAll, page, query }: RecipesProps) => {
   const { isLoading, data } = useQuery<
     unknown,
     unknown,
