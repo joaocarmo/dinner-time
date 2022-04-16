@@ -34,7 +34,7 @@ const RecipeCard: FC<RecipeProps> = ({
         </h1>
         <div className="text-lg font-semibold text-slate-500 align-middle">
           <span>{ratings}</span>{' '}
-          <FontAwesomeIcon icon={solid('star')} className="text-yellow-400" />
+          <FontAwesomeIcon className="text-yellow-400" icon={solid('star')} />
         </div>
         <div className="flex-none mt-2 w-full text-sm font-medium text-slate-700">
           {category}

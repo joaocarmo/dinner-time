@@ -1,7 +1,9 @@
 import { useQuery } from 'react-query'
+import Error from './Error'
+import Loading from './Loading'
+import RecipeCard from './RecipeCard'
 import fetchRecipes from '../api/fetchRecipes'
 import type { RecipeKey, RecipeResponse } from '../api/fetchRecipes'
-import RecipeCard from './RecipeCard'
 
 type RecipesProps = {
   mustContainAll: boolean
@@ -18,18 +20,26 @@ const Recipes = ({ mustContainAll, page, query }: RecipesProps) => {
   >(['recipes', undefined, { mustContainAll, page, query }], fetchRecipes)
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   if (!data?.recipes?.length) {
-    return <div>No recipes</div>
+    return (
+      <Error>
+        No{page > 1 ? ' more' : ''} recipes available
+        {query ? ` for ${query}` : ''}.
+      </Error>
+    )
   }
 
   return (
     <>
-      {data.recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} data={recipe} />
-      ))}
+      {
+        // @ts-ignore
+        data.recipes.map((recipe) => (
+          <RecipeCard key={recipe.id} data={recipe} />
+        ))
+      }
     </>
   )
 }
