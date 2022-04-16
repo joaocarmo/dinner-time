@@ -6,15 +6,17 @@ class SearchController < ApplicationController
 
     if query.nil?
       ingredients = []
+      @recipes = Recipe.none
     else
-      ingredients = query.split(',').map(&:strip)
+      ingredients = query.split(',').map(&:strip).compact_blank
+
+      if must_contain_all
+        @recipes = Recipe.search_by_all_ingredients(ingredients).order(:title).page params[:page]
+      else
+        @recipes = Recipe.search_by_ingredients(ingredients).order(:title).page params[:page]
+      end
     end
 
-    if must_contain_all
-      @recipes = Recipe.search_by_all_ingredients(ingredients).order(:title).page params[:page]
-    else
-      @recipes = Recipe.search_by_ingredients(ingredients).order(:title).page params[:page]
-    end
     count = Recipe.count
 
     serialized_recipes = ActiveModel::Serializer::CollectionSerializer.new(@recipes, each_serializer: RecipeSerializer)

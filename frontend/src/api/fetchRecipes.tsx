@@ -45,7 +45,7 @@ const fetchRecipes = async ({
 }: QueryFunctionContext<RecipeKey>): Promise<Recipe> => {
   const [, recipeId, { mustContainAll, page, query }] = queryKey
   const whichApi = query
-    ? searchApi(query, mustContainAll)
+    ? searchApi(query, page, mustContainAll)
     : recipesApi(recipeId, page)
   const response = await fetch(whichApi)
 

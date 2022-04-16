@@ -1,9 +1,13 @@
 export const API_BASE_URL = '/api/v1'
 
-export const search = (query: string, mustContainAll: boolean) =>
+export const search = (
+  query: string,
+  page: string | number,
+  mustContainAll: boolean,
+) =>
   `${API_BASE_URL}/search${
     query
-      ? `?q=${query}${
+      ? `?q=${query}${page ? `&page=${page}` : ''}${
           mustContainAll ? `&must_contain_all=${mustContainAll}` : ''
         }`
       : ''

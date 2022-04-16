@@ -31,6 +31,7 @@ const App = () => {
   const handleChangeContainAll = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setMustContainAll(event.target.checked)
+      setPage(1)
     },
     [],
   )
@@ -60,13 +61,11 @@ const App = () => {
         page={page}
         query={debouncedSearchValue}
       />
-      {!searchValue && (
-        <ChangePage
-          onNext={setNextPage}
-          onPrevious={setPreviousPage}
-          page={page}
-        />
-      )}
+      <ChangePage
+        onNext={setNextPage}
+        onPrevious={setPreviousPage}
+        page={page}
+      />
       <Footer />
     </div>
   )
