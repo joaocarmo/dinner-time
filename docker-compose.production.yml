@@ -16,12 +16,12 @@ services:
       context: ./backend
       dockerfile: production.Dockerfile
     container_name: backend
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 52145 -b '0.0.0.0'"
     environment:
       - DATABASE_URL=postgres://postgres:password@db:5432/dinnertime
       - SECRET_KEY_BASE=69782b185cf994696b846e43b8e26a6c9f724905c74bf7556162c5a18cd17edc68a702ffbd0df7e855e2f4c6cf71bf68c794741c9234841f45446c3679bd8e6d
     ports:
-      - "3030:3000"
+      - "52145:52145"
     depends_on:
       - db
   frontend:
@@ -31,7 +31,7 @@ services:
     container_name: frontend
     command: ["nginx", "-g", "daemon off;"]
     ports:
-      - "4040:80"
+      - "80:80"
     depends_on:
       - backend
 
