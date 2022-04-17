@@ -9,6 +9,8 @@ available in the [here][stories].
 
 ## Backend
 
+Using buildpack: _heroku/ruby_.
+
 Deployed on [Heroku][heroku] and available at
 <https://mydinnertime.herokuapp.com/api/v1>.
 
@@ -17,6 +19,8 @@ Deployed on [Heroku][heroku] and available at
 Available in the schema file [here][schema].
 
 ## Frontend
+
+Using buildpack: _mars/create-react-app_.
 
 Deployed on [Heroku][heroku] and available at
 <https://mydinnertimeui.herokuapp.com>.
