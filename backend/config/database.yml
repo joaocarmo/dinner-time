@@ -17,9 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: postgres
-  password: password
+  url: <%= ENV.fetch('DATABASE_URL') %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -82,11 +80,8 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-#   production:
-#     <<: *default
-#     database: backend_production
-#     username: backend
-#     password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
-#
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  database: backend_production
+  username: backend
+  password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
