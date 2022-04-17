@@ -33,7 +33,7 @@ class Recipe < ApplicationRecord
       recipes_must_have_ingredients[recipe_id] << ingredient_name
     end
 
-    selected_recipes_ids = recipes_must_have_ingredients.select! { |_, ingredient_names|
+    selected_recipes_ids = recipes_must_have_ingredients.select { |_, ingredient_names|
       ingredients.all? { |ingredient|
         ingredient_names.any? { |ingredient_name|
           ingredient_name.include?(ingredient)
