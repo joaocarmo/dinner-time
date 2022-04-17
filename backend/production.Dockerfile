@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ruby:2.7.4
+FROM ruby:2.7.6
 
 RUN apt-get update -qq && \
     apt-get install -y postgresql-client --no-install-recommends && \
