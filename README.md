@@ -1,52 +1,28 @@
 # Dinner time
 
-## Problem statement
+Problem statement [here][problem].
 
-> **It's dinner time ! Create an application that helps users find the most relevant recipes that they can prepare with the ingredients that they have at home**
+## User stories
 
-## Objective
+User stories are the main way to communicate the problem to the team. They are
+available in the [here][stories].
 
-Deliver an application prototype to answer the above problem statement.
+## Backend
 
-By prototype, we mean:
+Deployed on [Heroku][heroku] and available at
+<https://mydinnertime.herokuapp.com/api/v1>.
 
-- something usable, yet as simple as possible
-- UI / design is not important
-- we do not expect features which are outside the basic scope of the problem
+### DB Structure
 
-We expect to use this prototype as a starting point to discuss current implenentation details, as well as ideas for improvement.
+Available in the schema file [here][schema].
 
-### Requirements
+## Frontend
 
-#### Tech must-haves
+Deployed on [Heroku][heroku] and available at
+<https://mydinnertimeui.herokuapp.com>.
 
-- [x] MySQL / PostgreSQL or any other MySQL-compatible database.
-- [x] A backend application which responds to queries
-- [x] A web interface (can be VERY simple)
-- [x] Ruby on Rails
+<!-- References -->
 
-#### Bonus points
-
-- [x] React
-- [x] Application is hosted on heroku
-
-## Data
-
-We provide two datasets to choose from:
-
-- [french-language recipes](https://pennylane-interviewing-assets-20220328.s3.eu-west-1.amazonaws.com/recipes-fr.json.gz) scraped from www.marmiton.org with [python-marmiton](https://github.com/remaudcorentin-dev/python-marmiton)
-- [english-language recipes](https://pennylane-interviewing-assets-20220328.s3.eu-west-1.amazonaws.com/recipes-en.json.gz) scraped from www.allrecipes.com with [recipe-scrapers](https://github.com/hhursev/recipe-scrapers)
-
-Download it with this command if the above link doesn't work:
-
-```sh
-wget https://d1sf7nqdl8wqk.cloudfront.net/recipes.json.gz && gzip -dc recipes.json.gz > recipes.json
-```
-
-## Deliverable
-
-- the 2-3 user stories which the application implements
-- the codebase : in a git repo (share it with @quentindemetz @tdeo @rpechayr @soyoh @alex-min @karineHbt @Juleffel @jfpimentel @lucasbonin)
-- the database structure
-- the application, running on Heroku or on a personal server.
-- please submit links to the GitHub repo and the hosted application [via this form](https://forms.gle/siH7Rezuq2V1mUJGA)
+[problem]: ./PROBLEM.md
+[schema]: ./backend/db/schema.rb
+[stories]: ./USER_STORIES.md
