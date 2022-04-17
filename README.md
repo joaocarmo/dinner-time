@@ -23,6 +23,7 @@ Deployed on [Heroku][heroku] and available at
 
 <!-- References -->
 
+[heroku]: https://heroku.com
 [problem]: ./PROBLEM.md
 [schema]: ./backend/db/schema.rb
 [stories]: ./USER_STORIES.md
