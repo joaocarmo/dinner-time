@@ -19,8 +19,8 @@ const RecipeCard: FC<RecipeProps> = ({
     title,
   },
 }) => (
-  <div className="flex my-4 font-sans bg-slate-100 rounded">
-    <div className="relative flex-none w-48">
+  <div className="flex flex-col my-4 font-sans bg-slate-100 rounded md:flex-row">
+    <div className="flex relative w-full h-48 md:flex-none md:w-48 md:h-auto">
       <img
         src={image}
         alt=""
