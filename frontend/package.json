@@ -10,8 +10,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "patch-package"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -20,23 +19,23 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-query": "^3.34.20",
+    "react-highlight-words": "^0.18.0",
+    "react-query": "^3.35.0",
     "usehooks-ts": "^2.5.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.1.1",
-    "@testing-library/user-event": "^14.1.0",
+    "@testing-library/user-event": "^14.1.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^17.0.24",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
+    "@types/react-highlight-words": "^0.16.4",
     "autoprefixer": "^10.4.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-tailwindcss": "^3.5.0",
-    "patch-package": "^6.4.7",
     "postcss": "^8.4.12",
-    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.6.2",
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.0.24",

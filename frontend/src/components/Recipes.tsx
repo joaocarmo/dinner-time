@@ -18,6 +18,8 @@ const Recipes = ({ mustContainAll, page, query }: RecipesProps) => {
     RecipeResponse,
     RecipeKey
   >(['recipes', undefined, { mustContainAll, page, query }], fetchRecipes)
+  const searchWords = query.split(',').map((word) => word.trim())
+  console.log(searchWords)
 
   if (isLoading) {
     return <Loading />
@@ -34,12 +36,9 @@ const Recipes = ({ mustContainAll, page, query }: RecipesProps) => {
 
   return (
     <>
-      {
-        // @ts-ignore
-        data.recipes.map((recipe) => (
-          <RecipeCard key={recipe.id} data={recipe} />
-        ))
-      }
+      {data.recipes.map((recipe) => (
+        <RecipeCard key={recipe.id} data={recipe} searchWords={searchWords} />
+      ))}
     </>
   )
 }

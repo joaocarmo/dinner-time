@@ -1,10 +1,12 @@
 import type { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
+import Highlighter from 'react-highlight-words'
 import type { Recipe } from '../api/fetchRecipes'
 
 type RecipeProps = {
   data: Recipe
+  searchWords: string[]
 }
 
 const RecipeCard: FC<RecipeProps> = ({
@@ -18,6 +20,7 @@ const RecipeCard: FC<RecipeProps> = ({
     recipe_ingredients,
     title,
   },
+  searchWords,
 }) => (
   <div className="flex flex-col my-4 font-sans bg-slate-100 rounded md:flex-row">
     <div className="flex relative w-full h-48 md:flex-none md:w-48 md:h-auto">
@@ -61,7 +64,12 @@ const RecipeCard: FC<RecipeProps> = ({
             {recipe_ingredient.amount
               ? parseFloat(recipe_ingredient.amount).toFixed(1)
               : ''}{' '}
-            {recipe_ingredient.unit} {recipe_ingredient.ingredient.name}
+            {recipe_ingredient.unit}{' '}
+            <Highlighter
+              autoEscape
+              searchWords={searchWords}
+              textToHighlight={recipe_ingredient.ingredient.name}
+            />
             {index !== recipe_ingredients.length - 1 ? <br /> : null}
           </li>
         ))}

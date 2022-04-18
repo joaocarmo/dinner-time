@@ -2,7 +2,7 @@ FROM node:16 AS development
 
 WORKDIR /app
 
-COPY package.json yarn.lock patches ./
+COPY package.json yarn.lock ./
 
 RUN yarn --frozen-lockfile
 

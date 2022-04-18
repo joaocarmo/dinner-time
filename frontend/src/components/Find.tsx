@@ -39,7 +39,6 @@ const Find = ({ onClick }: FindProps) => {
           ></circle>
         </svg>
         Find recipes...
-        <span className="flex-none pl-3 ml-auto text-xs font-semibold">⌘K</span>
       </button>
     </div>
   )

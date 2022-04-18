@@ -12,12 +12,11 @@ if (container) {
   const root = createRoot(container)
 
   root.render(
-    <StrictMode>
-      {/* @ts-ignore */}
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <StrictMode>
         <App />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </StrictMode>,
+      </StrictMode>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>,
   )
 }
