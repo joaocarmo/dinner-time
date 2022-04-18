@@ -8,7 +8,7 @@ class SearchController < ApplicationController
       ingredients = []
       @recipes = Recipe.none
     else
-      ingredients = query.split(',').map(&:strip).compact_blank
+      ingredients = query.split(',').map(&:strip).map(&:downcase).compact_blank
 
       if must_contain_all
         @recipes = Recipe.search_by_all_ingredients(ingredients).order(:title).page params[:page]

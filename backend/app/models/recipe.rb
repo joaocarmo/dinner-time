@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   def self.search_by_ingredients(ingredients)
     # Find recipes that match one of the ingredients
     ingredients_with_wildcards = ingredients.map { |ingredient| "%#{ingredient}%" }
-    ingredients_sql_query = Array.new(ingredients_with_wildcards.length) { "name ILIKE ?" }.join(' OR ')
+    ingredients_sql_query = Array.new(ingredients_with_wildcards.length) { "lower(name) LIKE ?" }.join(' OR ')
 
     found_ingredients = Ingredient.where(ingredients_sql_query, *ingredients_with_wildcards)
     found_ingredients_ids = found_ingredients.map(&:id).uniq
@@ -18,7 +18,7 @@ class Recipe < ApplicationRecord
   def self.search_by_all_ingredients(ingredients)
     # Find recipes that match all the ingredients
     ingredients_with_wildcards = ingredients.map { |ingredient| "%#{ingredient}%" }
-    ingredients_sql_query = Array.new(ingredients_with_wildcards.length) { "name ILIKE ?" }.join(' OR ')
+    ingredients_sql_query = Array.new(ingredients_with_wildcards.length) { "lower(name) LIKE ?" }.join(' OR ')
 
     found_ingredients = Ingredient.where(ingredients_sql_query, *ingredients_with_wildcards)
     found_ingredients_ids = found_ingredients.map(&:id).uniq.sort
