@@ -12,11 +12,11 @@ export const search = (
 ) => {
   const base = `${getSelfBaseUrl()}/${API_BASE_URL}`
   const url = new URL(`${base}/search`)
+
   url.searchParams.set('q', query)
   url.searchParams.set('page', page.toString())
   url.searchParams.set('must_contain_all', mustContainAll.toString())
 
-  console.log(url.toString())
   return url.toString()
 }
 
@@ -28,6 +28,5 @@ export const recipes = (recipeId?: string | number, page?: string | number) => {
     url.searchParams.set('page', page.toString())
   }
 
-  console.log(url.toString())
   return url.toString()
 }

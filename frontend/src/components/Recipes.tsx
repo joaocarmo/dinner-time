@@ -19,7 +19,6 @@ const Recipes = ({ mustContainAll, page, query }: RecipesProps) => {
     RecipeKey
   >(['recipes', undefined, { mustContainAll, page, query }], fetchRecipes)
   const searchWords = query.split(',').map((word) => word.trim())
-  console.log(searchWords)
 
   if (isLoading) {
     return <Loading />

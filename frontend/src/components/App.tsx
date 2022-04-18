@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import type { ChangeEvent } from 'react'
 import { useDebounce } from 'usehooks-ts'
 import Find from './Find'
@@ -8,13 +8,29 @@ import ChangePage from './ChangePage'
 import Recipes from './Recipes'
 import Search from './Search'
 import Welcome from './Welcome'
+import useUrlParams from '../hooks/useUrlParams'
 
 const App = () => {
+  const [urlParams, updateUrlParams] = useUrlParams()
+  const {
+    mustContainAll: urlMustContainAll,
+    page: urlPage,
+    query: urlQuery,
+  } = urlParams
   const [searchEnabled, setSearchEnabled] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
-  const [mustContainAll, setMustContainAll] = useState(true)
-  const [page, setPage] = useState(1)
-  const debouncedSearchValue = useDebounce<string>(searchValue, 1500)
+  const [query, setQuery] = useState(urlQuery)
+  const [mustContainAll, setMustContainAll] = useState(urlMustContainAll)
+  const [page, setPage] = useState(urlPage)
+  const debouncedSearchValue = useDebounce<string>(query, 1500)
+  const memoizedParams = useMemo(
+    () => ({
+      mustContainAll,
+      page,
+      query: debouncedSearchValue,
+    }),
+    [debouncedSearchValue, mustContainAll, page],
+  )
+  updateUrlParams(memoizedParams)
 
   const handleOnFindClick = useCallback(() => {
     setSearchEnabled(true)
@@ -22,7 +38,7 @@ const App = () => {
 
   const handleOnSearchChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      setSearchValue(event.target.value)
+      setQuery(event.target.value)
       setPage(1)
     },
     [],
@@ -47,8 +63,8 @@ const App = () => {
   return (
     <div className="container p-8 my-14 mx-auto max-w-screen-lg">
       <Welcome />
-      {searchEnabled ? (
-        <Search onChange={handleOnSearchChange} value={searchValue} />
+      {query || searchEnabled ? (
+        <Search onChange={handleOnSearchChange} value={query} />
       ) : (
         <Find onClick={handleOnFindClick} />
       )}
