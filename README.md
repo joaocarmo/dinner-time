@@ -1,7 +1,5 @@
 # Dinner time
 
-Problem statement [here][problem].
-
 ## User stories
 
 User stories are the main way to communicate the problem to the team. They are
