@@ -27,7 +27,7 @@ Deployed on [Heroku][heroku] and available at
 
 ## Data
 
-Recipes scraped from www.allrecipes.com with [recipe-scrapers][recipe-scrapers]
+Recipes scraped from www.allrecipes.com with [recipe-scrapers][recipe-scrapers].
 
 <!-- References -->
 
